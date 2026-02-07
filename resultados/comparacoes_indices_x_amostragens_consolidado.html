@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<style>
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+    background: #f8f9fa;
+    margin: 0;
+    height: 100vh;
+}
+
+.tabs {
+    display: flex;       
+    flex-direction: row; 
+    justify-content: center; 
+    padding: 12px;
+    background: transparent;
+}
+
+.tab-button {
+    background: #4C72B0;
+    color: white;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    margin-right: 8px;   /* espaçamento horizontal entre botões */
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.tab-button.active {
+    background: #2A4A7C;
+    font-weight: bold;
+}
+
+.tab-container {
+    flex: 1;            /* ocupa todo o restante da tela */
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-content {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+
+.tab-content.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="tabs">
+
+    <button class="tab-button active" onclick="openTab(0)">Simples</button>
+    
+    <button class="tab-button " onclick="openTab(1)">Sistemática</button>
+    
+    <button class="tab-button " onclick="openTab(2)">Agrupamento (Setor)</button>
+    
+    <button class="tab-button " onclick="openTab(3)">Agrupamento (Participação)</button>
+    
+    <button class="tab-button " onclick="openTab(4)">Estratificada (Participação)</button>
+    
+</div>
+
+<div class="tab-container">
+
+    <div class="tab-content active">
+        <iframe src="comparacoes_todos_indices_x_amostragem_simples.html"></iframe>
+    </div>
+    
+    <div class="tab-content ">
+        <iframe src="comparacoes_todos_indices_x_amostragem_sistematica.html"></iframe>
+    </div>
+    
+    <div class="tab-content ">
+        <iframe src="comparacoes_todos_indices_x_amostragem_setor.html"></iframe>
+    </div>
+    
+    <div class="tab-content ">
+        <iframe src="comparacoes_todos_indices_x_amostragem_grupo.html"></iframe>
+    </div>
+    
+    <div class="tab-content ">
+        <iframe src="comparacoes_todos_indices_x_amostragem_estratificada.html"></iframe>
+    </div>
+    
+</div>
+
+<script>
+function openTab(index) {
+    const tabs = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-button');
+
+    tabs.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+    });
+
+    buttons.forEach((b, i) => {
+        b.classList.toggle('active', i === index);
+    });
+}
+</script>
+
+</body>
+</html>
